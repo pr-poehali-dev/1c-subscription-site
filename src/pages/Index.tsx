@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handlePlanSelect = (plan: string) => {
     setSelectedPlan(plan);
+  };
+
+  const handlePremiumClick = () => {
+    navigate('/payment');
   };
 
   return (
@@ -62,6 +68,7 @@ const Index = () => {
             <Button 
               className="w-full mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-6 text-lg"
               size="lg"
+              onClick={handlePremiumClick}
             >
               Выбрать премиум
             </Button>
